@@ -1,38 +1,353 @@
-.App {
-  text-align: center;
+/*Estilos ESTANDAR */
+.google {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+  
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 10px 20px;
+  background-color: #333;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* ------ */
+main {
+  display: flex;
+  flex: 1;
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+/* Logo en el header EN PROCESOOO () */
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  padding: 0;
+}
+
+.logo img {
+  height: 100px;
+  width: auto;
+  margin: 0;
+}
+
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin-right: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+/* --------Barra de busqueda --------*/
+.search-bar {
+  display: flex;
+}
+
+.search-bar input {
+  padding: 5px;
+  margin-right: 5px;
+}
+
+/*---------------------------*/
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+
+/* -----------------------------------------------------------------------------------------------------*/
+
+
+/* ----------Barra lateral----------------- */
+.barra-lateral {
+  width: 20%;
+  min-width: 200px;
+  background-color: #c0bbbb;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.barra-lateralr h2 {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+}
+
+.barra-lateral ul {
+  list-style: none;
+  padding: 0;
+}
+
+.barra-lateral ul li {
+  margin-bottom: 0.5rem;
+}
+
+.barra-lateral ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.barra-lateral ul li input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.barra-lateral ul li label {
+  font-size: 1em;
+  color: #333;
+}
+
+/*---------------------------------------------------------------*/
+
+/* ---Estilos para las cards de los productos  INDEEX------------*/
+/* Productos */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.product-card {
+  flex: 1 1 calc(33% - 20px); 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.product-card h2 {
+  font-size: 1.5em;
+  margin: 10px 0;
+}
+
+.product-card .precio {
+  font-size: 1.2em;
+  color: #83af5b;
+  margin: 5px 0;
+}
+
+.product-card .description {
+  font-size: 1em;
+  color: #666;
+  margin: 10px 0;
+}
+
+/* Botón de compra */
+.comprar-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem; 
+  background-color: #3cac6a;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-size: 1rem; 
+}
+
+.comprar-btn:hover {
+  background-color: #123d21;
+}
+
+/*----------------------------------------------------------------------------------*/
+/*-------------------- ALTA PRODUCTOS------------------*/
+
+.product-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.product-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.product-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.product-form input,
+.product-form textarea,
+.product-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* En el caso de que me  decida x sacar para que se "agrande" el imput de textarea 
+textarea {
+  resize: none;
+}*/
+
+.product-form input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+}
+
+.product-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #297e4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.product-form button:hover {
+  background-color: #0056b3;
+}
+/*--------------------------------------------------------*/
+/* -----------------CONTACTOO -------------  */
+/*Para que el footer quede abajo  */
+.contacto {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+}
+
+.contacto main {
+  flex: 1;
+  display: block;
+}
+
+/*--------------------*/
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.contact-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #297e4c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+
+/*todavia no me convece este color */
+.contact-form button:hover {
+  background-color: #75d6a9;
+}
+/*---------------------------------------------------------*/
+
+/*-----------"NOSOTROS " ---------------*/
+
+.nosotros {
+  display: flex;
+  flex-direction: column;
+  min-height: 76vh;
+}
+
+body.nosotros main {
+  flex: 1;
+  display: block;
+}
+
+.nosotros h1 {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2.5em;
+  color: #297e4c;
+}
+
+.nosotros p {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+  font-size: 1.2em;
+  line-height: 1.6;
+  color: #333;
+  text-align: center;
+}
+
+footer .footer-text {
+  color: #ffffff;
+  font-size: 1em;
 }
