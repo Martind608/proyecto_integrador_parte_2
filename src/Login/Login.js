@@ -15,9 +15,9 @@ const Login = () => {
     return (
 
         <>
-
+    <main className="contacto">
             <h1 class="text-center mt-5">
-                Login React
+                Inicio de Sesion
             </h1>
 
             <div className="container formulario-login">
@@ -38,7 +38,7 @@ const Login = () => {
                 </form>
             </div>
 
-
+            </main>
         </>
 
     );

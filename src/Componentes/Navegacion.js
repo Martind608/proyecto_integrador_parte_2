@@ -2,13 +2,18 @@ import logo from '../Logo/logo.png'
 import '../App.css'
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
-
-
+import { FaFacebook, FaInstagram } from 'react-icons/fa';
 
 const Navegacion = () => {
     return (
         <>
+            <div className="col text-left d-none d-md-block">
+                <FaInstagram className="social-icon" />
+                <FaFacebook className="social-icon" />
+            </div>
             <header>
+        
+            
                 <div class="logo">
                     <img src={logo} alt="Óptica Tech"/>
                 </div>
