@@ -4,7 +4,7 @@ const Contacto = () => {
             <section className="contact-form">
                 <h1>Contacto</h1>
                 <form id="contactForm">
-                    <label htmlFor="nombre">Nombre:</label>
+                    <label For="nombre">Nombre:</label>
                     <input
                         type="text"
                         id="nombre"
@@ -13,9 +13,9 @@ const Contacto = () => {
                         pattern="^[a-zA-Z\s]{2,50}$"
                         title="El nombre debe tener entre 2 y 50 caracteres y solo contener letras y espacios."
                     />
-                    <label htmlFor="email">E-mail:</label>
+                    <label For="email">E-mail:</label>
                     <input type="email" id="email" name="email" required />
-                    <label htmlFor="comentarios">Comentarios:</label>
+                    <label For="comentarios">Comentarios:</label>
                     <textarea
                         id="comentarios"
                         name="comentarios"
