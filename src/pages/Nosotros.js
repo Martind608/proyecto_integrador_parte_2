@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 const Nosotros = () => {
     useEffect(() => {
         document.body.classList.add('nosotros');
-        // Limpia la clase cuando el componente se desmonta (corregir...)
         return () => {
             document.body.classList.remove('nosotros');
         };

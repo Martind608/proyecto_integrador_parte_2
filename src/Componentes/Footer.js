@@ -1,20 +1,6 @@
-/*
-import '../App.css'
-
-
-const Footer = () => {
-
-    return(
-        <footer>
-            <p class="footer-text">© 2024 Optica-tech. Todos los derechos reservados.</p>
-        </footer>
-    )
-}
-
-export default Footer;*/
 import { FaFacebook, FaInstagram } from 'react-icons/fa';
 import '../App.css';
-
+import { Link } from 'react-router-dom';
 const Footer = () => {
     return (
         <footer className="footer-container">
@@ -59,7 +45,7 @@ const Footer = () => {
                 <img src="ruta" alt="Logos de medios de envío" />
             </div>
             <div className="footer-bottom">
-                <p>© 2024 Optica-tech. Todos los derechos reservados. Defensa de las y los consumidores. <a href="#">Para reclamos ingresá acá.</a></p>
+                <p>© 2024 Optica-tech. Todos los derechos reservados. Defensa de las y los consumidores. <Link>Para reclamos ingresá acá.</Link> </p>
             </div>
         </footer>
     );

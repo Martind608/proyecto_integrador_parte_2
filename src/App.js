@@ -27,7 +27,6 @@ function App() {
         <Route path='/*' element={<Error />} />
         <Route path="/carrito" element={<Carrito/>} />
       </Routes>
-     
 
 
       </main>

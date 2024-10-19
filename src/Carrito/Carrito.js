@@ -1,50 +1,44 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
 const Carrito = () => {
-
-    const [carrito, setCarrito] = useState({});
+    const [carrito, setCarrito] = useState([]);
     const [user, setUser] = useState();
 
     const navigate = useNavigate();
 
     useEffect(() => {
+        const productos = JSON.parse(localStorage.getItem('producto'));
 
-        const producto = JSON.parse(localStorage.getItem('producto'));
-
-        if (!producto) {
+        if (!productos || productos.length === 0) {
             alert('No hay productos en el carrito');
-            navigate('/ecommerce');
-        }
-        else {
+            navigate('/');
+        } else {
             setUser(window.sessionStorage.getItem('user'));
-            setCarrito(producto);
+            setCarrito(productos);
         }
-    },{});
+    }, [navigate]);
 
     const eliminarDatos = () => {
         localStorage.removeItem('producto');
-        /* localStorage.clear(); borra TODO el localstorage */
-        navigate('/ecommerce');
+        navigate('./');
     };
 
     return (
         <div className="container text-center">
             <h1>Carrito de {user}</h1>
-            <div class="card">
-                
-                    <div class="card-body">
-                        <h5 class="card-title">{carrito.nombre}</h5>
-                        <p class="card-text">{carrito.descripcion}</p>
-                        <p class="card-text">Precio: ${carrito.precio}</p>
-                        <button onClick={eliminarDatos} class="btn btn-primary">Comprar</button>
+            {carrito.map((producto, index) => (
+                <div className="card" key={index}>
+                    <div className="card-body">
+                        <h5 className="card-title">{producto.nombre}</h5>
+                        <p className="card-text">{producto.descripcion}</p>
+                        <p className="card-text">Precio: ${producto.precio}</p>
                     </div>
-            </div>
+                </div>
+            ))}
+            <button onClick={eliminarDatos} className="btn btn-primary">Vaciar Carrito</button>
         </div>
     );
 };
-
 
 export default Carrito;
