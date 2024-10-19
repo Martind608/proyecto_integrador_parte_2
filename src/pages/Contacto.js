@@ -1,9 +1,15 @@
 const Contacto = () => {
+ 
+        const handleSubmit = (event) => {
+            //Esto asegura que la función se ejecute cuando el formulario sea enviado, lo uso con el onsubmit del form.
+            event.preventDefault(); 
+            alert('Formulario enviado con éxito'); 
+        };
     return (
         <main className="contacto">
             <section className="contact-form">
                 <h1>Contacto</h1>
-                <form id="contactForm">
+                <form id="contactForm"onSubmit={handleSubmit} >
                     <label For="nombre">Nombre:</label>
                     <input
                         type="text"

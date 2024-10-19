@@ -1,11 +1,17 @@
 import React from 'react';
 
 const ProductForm = () => {
+
+    const handleSubmit = (event) => {
+        //Esto asegura que la función se ejecute cuando el formulario sea enviado, lo uso con el onsubmit del form.
+        event.preventDefault(); 
+        alert('Formulario enviado con éxito'); 
+    };
     return (
         <main className="product-form">
             <section>
                 <h1>Alta de Productos</h1>
-                <form id="productForm">
+                <form id="productForm" onSubmit={handleSubmit}>
                     <label htmlFor="nombre">Nombre:</label>
                     <input
                         type="text"
