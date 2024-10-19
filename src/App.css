@@ -4,6 +4,9 @@
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
 }
 
 body {
@@ -102,7 +105,8 @@ nav ul li a {
 .barra-lateral {
   width: 20%;
   min-width: 216px;
-  background-color: #c0bbbb;
+  /* background-color: #c0bbbb; */
+  background-color: #DBDBDB;
   padding: 1rem;
   box-sizing: border-box;
   height: 100%; /* Para que la barra ocupe toda la altura disponible */
@@ -212,18 +216,24 @@ nav ul li a {
 
 /*----------------------------------------------------------------------------------*/
 /*-------------------- ALTA PRODUCTOS------------------*/
+/* 
+  
 
+} */
 .product-form {
-  max-width: 600px;
-  margin: 10px 651.5px 20px;
+  max-width: 35%; 
+  margin: 10px auto 20px; 
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
-  
-
+  box-sizing: border-box;
 }
+@media (min-width: 768px) {
+  .product-form {
+    max-width: 600px; 
+  }}
 
 .product-form h1 {
   text-align: center;
@@ -376,20 +386,23 @@ footer .footer-text {
 }
 /*---------------------------------------------------------------*/
 
-/* busqueda */
+/* header superior*/
 div .col.text-left.d-none.d-md-block {
-	font-size: 14px;
-	line-height: 20px;
-	background-color: #5c5a5a;
-	text-align: left;
-	height: 20px;
-	width: auto;
-	margin: 0;
-	padding: 0 15px;
-	max-width: 100%;
-	position: relative;
-	display: block;
-	box-sizing: border-box;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #5c5a5a;
+  text-align: left;
+  height: 20px;
+  width: 100%; 
+  margin: 0;
+  padding: 0 15px;
+  max-width: 100%;
+  max-height: fit-content;
+  /* position: fixed; Fija la barra en la parte superior */
+  top: 0; 
+  left: 0; 
+  z-index: 1000; 
+  box-sizing: border-box;
 }
 .social-icon {
   color: white;
@@ -400,3 +413,90 @@ div .col.text-left.d-none.d-md-block {
 .social-icon:hover {
   color: #ddd;
 }
+
+/* ------------Footer nuevo-------------- */
+.footer-container {
+  /* background-color: #E3E9E9; */
+  background-color: #DBDBDB;
+  padding: 20px;
+  font-size: 14px;
+  color: #6d6d6d;
+  
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.footer-column {
+  width: 30%;
+}
+
+.footer-column h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #4f4f4f;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+.footer-column li i {
+  margin-right: 10px;
+}
+/* redes */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content:center
+}
+
+.social-icons i {
+  font-size: 24px;
+  cursor: pointer;
+  color: #6d6d6d;
+  
+}
+
+.social-icons i:hover {
+  color: #000;
+}
+/* medio de pago y de envio */
+.footer-payment, .footer-shipping {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-payment img, .footer-shipping img {
+  max-width: 100%;
+}
+/* footer inferior */
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid #dcdcdc;
+  margin-top: 20px;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  color: #4f4f4f;
+}
+
+.footer-bottom a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+/* ----------- */

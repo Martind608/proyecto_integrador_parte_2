@@ -20,9 +20,9 @@ const Login = () => {
             return;
         }
 
-        if (email == 'pepe@gmail.com' && password == '1234') {
+        if (email == 'martindesch@gmail.com' && password == '1234') {
             alert("Login realizado")
-            window.sessionStorage.setItem('user', 'pepe@gmail.com');
+            window.sessionStorage.setItem('user', 'martindesch@gmail.com');
             navigate('/admin');
         } else {
             alert("Usuario o contraseña incorrecta");

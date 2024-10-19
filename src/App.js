@@ -7,24 +7,27 @@ import Home from './pages/Home';
 import Alta from './pages/Alta';         
 import Contacto from './pages/Contacto'; 
 import Nosotros from './pages/Nosotros';
-// import Error from './Error/Error';
+import Error from './Error/Error';
 import Login from './Login/Login';
+import Carrito from './Carrito/Carrito';
 function App() {
   return (
 
 
     <div className="google">
       <Navegacion />
+      <main>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/alta" element={<Alta />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/login" element={<Login />} />
-      
+        <Route path='/*' element={<Error />} />
+        <Route path="/carrito" element={<Carrito/>} />
       </Routes>
-      <main>
-      
+     
 
 
       </main>

@@ -12,6 +12,7 @@ const Error = () => {
         </h1>
         <img src="https://definicion.de/wp-content/uploads/2009/02/error.png" alt="error" />
     </div>
+
     )
 }
 
