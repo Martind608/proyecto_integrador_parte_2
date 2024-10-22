@@ -2,12 +2,6 @@ import React, { useEffect } from 'react';
 
 
 const Nosotros = () => {
-    useEffect(() => {
-        document.body.classList.add('nosotros');
-        return () => {
-            document.body.classList.remove('nosotros');
-        };
-    }, []);
 
     return (
         <main className="nosotros">
