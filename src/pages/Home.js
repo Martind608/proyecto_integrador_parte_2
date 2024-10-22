@@ -9,9 +9,9 @@ const Home = () => {
 
     const addToCart = (product) => {
         alert(`Producto ${product.nombre} agregado al carrito`);
-        const updatedCart = [...cart, product];
-        setCart(updatedCart);
-        localStorage.setItem('producto', JSON.stringify(updatedCart));
+        const updatedCart = [...cart, product];           //Nueva copia del carrito con nuevo producto.
+        setCart(updatedCart);             //  Actualiza el estado con el nuevo carrito.
+        localStorage.setItem('producto', JSON.stringify(updatedCart));    //Guarda el carrito en el localStorage.
     };
 
     const productos = [

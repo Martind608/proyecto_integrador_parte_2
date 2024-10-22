@@ -14,13 +14,13 @@ const Carrito = () => {
             alert('No hay productos en el carrito');
             navigate('/');
         } else {
-            setUser(window.sessionStorage.getItem('user'));
-            setCarrito(productos);
+            setUser(window.sessionStorage.getItem('user'));// Para recuperar el usuario almacenado en sessionStorage
+            setCarrito(productos); // -----
         }
     }, [navigate]);
 
     const eliminarDatos = () => {
-        localStorage.removeItem('producto');
+        localStorage.removeItem('producto');// Borra los productos del carrito
         navigate('./');
     };
 
