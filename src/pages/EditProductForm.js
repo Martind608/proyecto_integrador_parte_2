@@ -72,6 +72,25 @@ const EditProductForm = () => {
             alert('Error al conectar con el servidor');
         }
     };
+      // Eliminar producto
+      const handleDelete = async () => {
+        if (window.confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+            try {
+                const response = await fetch(`http://localhost:5000/api/productos/${id}`, {
+                    method: 'DELETE',
+                });
+                if (response.ok) {
+                    alert('Producto eliminado con éxito');
+                    navigate('/stock'); // Redirigir después de eliminar
+                } else {
+                    alert('Error al eliminar el producto');
+                }
+            } catch (err) {
+                console.error('Error al eliminar el producto:', err);
+                alert('Error al conectar con el servidor');
+            }
+        }
+    };
 
     if (loading) return <p>Cargando datos del producto...</p>;
     if (error) return <p>{error}</p>;
@@ -186,6 +205,22 @@ const EditProductForm = () => {
                     />
 
                     <button type="submit">Guardar Cambios</button>
+                    <button
+                        type="button"
+                        onClick={handleDelete}
+                        style={{
+                            backgroundColor: 'red',
+                            color: 'white',
+                            padding: '10px',
+                            border: 'none',
+                            marginTop:'2px',
+                            borderRadius: '5px',
+                            cursor: 'pointer',
+                    
+                        }}
+                    >
+                        Eliminar Producto
+                    </button>
                 </form>
             </section>
         </main>
