@@ -23,7 +23,7 @@ const ProductForm = () => {
             [name]: type === 'checkbox' ? checked : value,
         });
     };
-
+//----
     const handleSubmit = async (event) => {
         event.preventDefault();
 
