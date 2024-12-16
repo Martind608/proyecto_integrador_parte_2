@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const EditProductForm = () => {
     const { id } = useParams(); // Obtenemos el ID 
@@ -26,9 +27,7 @@ const EditProductForm = () => {
     useEffect(() => {
         const fetchProducto = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/productos/${id}`);
-                if (!response.ok) throw new Error('No se pudo obtener el producto');
-                const data = await response.json();
+                const { data } = await axios.get(`http://localhost:5000/api/productos/${id}`);
                 setFormData(data); // Precargar los datos del producto
                 setLoading(false);
             } catch (err) {
@@ -53,41 +52,31 @@ const EditProductForm = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:5000/api/productos/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
+            const { precio, stock } = formData;
 
-            if (response.ok) {
-                alert('Producto actualizado con éxito');
-                navigate('/stock'); 
-            } else {
-                alert('Error al actualizar el producto');
-            }
+            // Validación básica
+            if (precio < 0) return alert('El precio no puede ser negativo');
+            if (stock < 0) return alert('El stock no puede ser negativo');
+
+            await axios.put(`http://localhost:5000/api/productos/${id}`, formData);
+            alert('Producto actualizado con éxito');
+            navigate('/stock'); 
         } catch (err) {
             console.error('Error al actualizar producto:', err);
-            alert('Error al conectar con el servidor');
+            alert(err.response?.data?.mensaje || 'Error al conectar con el servidor');
         }
     };
-      // Eliminar producto
-      const handleDelete = async () => {
+
+    // Eliminar producto
+    const handleDelete = async () => {
         if (window.confirm('¿Estás seguro de que quieres eliminar este producto?')) {
             try {
-                const response = await fetch(`http://localhost:5000/api/productos/${id}`, {
-                    method: 'DELETE',
-                });
-                if (response.ok) {
-                    alert('Producto eliminado con éxito');
-                    navigate('/stock'); // Redirigir después de eliminar
-                } else {
-                    alert('Error al eliminar el producto');
-                }
+                await axios.delete(`http://localhost:5000/api/productos/${id}`);
+                alert('Producto eliminado con éxito');
+                navigate('/stock'); // Redirigir después de eliminar
             } catch (err) {
                 console.error('Error al eliminar el producto:', err);
-                alert('Error al conectar con el servidor');
+                alert(err.response?.data?.mensaje || 'Error al conectar con el servidor');
             }
         }
     };
