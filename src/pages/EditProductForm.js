@@ -1,7 +1,10 @@
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import React, { useState } from 'react';
+const EditProductForm = () => {
+    const { id } = useParams(); // Obtenemos el ID 
+    const navigate = useNavigate(); 
 
-const ProductForm = () => {
     const [formData, setFormData] = useState({
         nombre: '',
         precio: '',
@@ -16,6 +19,28 @@ const ProductForm = () => {
         foto: '',
     });
 
+    const [loading, setLoading] = useState(true); // Estado carga
+    const [error, setError] = useState(null); // Estado errores
+
+    // Carga de datos del producto
+    useEffect(() => {
+        const fetchProducto = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/productos/${id}`);
+                if (!response.ok) throw new Error('No se pudo obtener el producto');
+                const data = await response.json();
+                setFormData(data); // Precargar los datos del producto
+                setLoading(false);
+            } catch (err) {
+                console.error(err);
+                setError('Error al cargar el producto');
+                setLoading(false);
+            }
+        };
+
+        fetchProducto();
+    }, [id]);
+
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
         setFormData({
@@ -28,8 +53,8 @@ const ProductForm = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/api/productos', {
-                method: 'POST',
+            const response = await fetch(`http://localhost:5000/api/productos/${id}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -37,33 +62,24 @@ const ProductForm = () => {
             });
 
             if (response.ok) {
-                alert('Producto agregado con éxito');
-                setFormData({
-                    nombre: '',
-                    precio: '',
-                    stock: '',
-                    marca: '',
-                    categoria: '',
-                    descripcionCorta: '',
-                    descripcionLarga: '',
-                    envio: false,
-                    edadDesde: '',
-                    edadHasta: '',
-                    foto: '',
-                });
+                alert('Producto actualizado con éxito');
+                navigate('/stock'); 
             } else {
-                alert('Error al agregar el producto');
+                alert('Error al actualizar el producto');
             }
-        } catch (error) {
-            console.error('Error al agregar producto:', error);
+        } catch (err) {
+            console.error('Error al actualizar producto:', err);
             alert('Error al conectar con el servidor');
         }
     };
 
+    if (loading) return <p>Cargando datos del producto...</p>;
+    if (error) return <p>{error}</p>;
+
     return (
         <main className="product-form">
             <section>
-                <h1>Alta de Productos</h1>
+                <h1>Editar Producto</h1>
                 <form id="productForm" onSubmit={handleSubmit}>
                     <label htmlFor="nombre">Nombre:</label>
                     <input
@@ -73,8 +89,6 @@ const ProductForm = () => {
                         value={formData.nombre}
                         onChange={handleChange}
                         required
-                        pattern="^[a-zA-Z\s]{2,50}$"
-                        title="El nombre debe tener entre 2 y 50 caracteres y solo contener letras y espacios."
                     />
 
                     <label htmlFor="precio">Precio:</label>
@@ -105,8 +119,6 @@ const ProductForm = () => {
                         value={formData.marca}
                         onChange={handleChange}
                         required
-                        pattern="^[a-zA-Z\s]{2,50}$"
-                        title="La marca debe tener entre 2 y 50 caracteres y solo contener letras y espacios."
                     />
 
                     <label htmlFor="categoria">Categoría:</label>
@@ -117,8 +129,6 @@ const ProductForm = () => {
                         value={formData.categoria}
                         onChange={handleChange}
                         required
-                        pattern="^[a-zA-Z\s]{2,50}$"
-                        title="La categoría debe tener entre 2 y 50 caracteres y solo contener letras y espacios."
                     />
 
                     <label htmlFor="descripcionCorta">Descripción corta:</label>
@@ -128,9 +138,6 @@ const ProductForm = () => {
                         value={formData.descripcionCorta}
                         onChange={handleChange}
                         required
-                        minLength="10"
-                        maxLength="500"
-                        title="La descripción corta debe tener entre 10 y 500 caracteres."
                     ></textarea>
 
                     <label htmlFor="descripcionLarga">Descripción larga:</label>
@@ -139,9 +146,6 @@ const ProductForm = () => {
                         name="descripcionLarga"
                         value={formData.descripcionLarga}
                         onChange={handleChange}
-                        minLength="10"
-                        maxLength="500"
-                        title="La descripción larga debe tener entre 10 y 500 caracteres."
                     ></textarea>
 
                     <label htmlFor="envio">Envío sin cargo:</label>
@@ -179,14 +183,13 @@ const ProductForm = () => {
                         value={formData.foto}
                         onChange={handleChange}
                         required
-                        title="Introduce una URL válida para la imagen."
                     />
 
-                    <button type="submit">Agregar Producto</button>
+                    <button type="submit">Guardar Cambios</button>
                 </form>
             </section>
         </main>
     );
 };
 
-export default ProductForm;
+export default EditProductForm;

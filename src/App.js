@@ -10,6 +10,10 @@ import Nosotros from './pages/Nosotros';
 import Error from './Error/Error';
 import Login from './Login/Login';
 import Carrito from './Carrito/Carrito';
+import Stock from './pages/Stock'; 
+import EditProductForm from './pages/EditProductForm';
+
+
 function App() {
   return (
 
@@ -25,6 +29,9 @@ function App() {
         <Route path="/nosotros" element={<Nosotros />} />
         <Route path="/login" element={<Login />} />
         <Route path='/*' element={<Error />} />
+        <Route path="/stock" element={<Stock />} /> 
+        <Route path="/editar-producto/:id" element={<EditProductForm />} />
+
         <Route path="/carrito" element={<Carrito/>} />
       </Routes>
 

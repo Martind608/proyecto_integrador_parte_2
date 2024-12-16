@@ -23,6 +23,7 @@ const Navegacion = () => {
                     <li><Link to="/alta">Alta de Productos</Link></li>
                     <li><Link to="/contacto">Contacto</Link></li>
                     <li><Link to="/nosotros">Nosotros</Link></li>
+                    <li><Link to="/stock">Stock</Link></li>
                     <li><Link to="/login">Login</Link></li>
                     <li>
                             <Link to="/carrito">
